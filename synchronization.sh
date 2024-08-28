@@ -14,9 +14,6 @@ __reload_history () {
     history -r $f
   done
 }
-if [[ "$PROMPT_COMMAND" != *__reload_history* ]]; then
-  export PROMPT_COMMAND="__reload_history; $PROMPT_COMMAND"
-fi
 
 # append provided file to main history
 __merge_history_file() {
@@ -24,7 +21,7 @@ __merge_history_file() {
   [ -e "$1" ] && file="$1" || return 0
   echo "Flushing $(basename $file)"
   cat "$file" >> "$HISTFILE"
-  rm "$file"
+  rm -f "$file"
 }
 flush_current_session_history() { __merge_history_file "${HISTFILE}.$$"; }
 # run it automatically on bash exit

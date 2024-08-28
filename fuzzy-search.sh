@@ -11,6 +11,6 @@ if which fzf >/dev/null; then
   )
   # replace default Ctrl-R mapping
   bind '"\er": redraw-current-line'  # helper
-  bind '"\C-r": " \C-e\C-u`__history_fzf_search \C-y`\e\C-e\er"'
+  bind '"\C-f": " \C-e\C-u`__history_fzf_search \C-y`\e\C-e\er"'
 fi
 
